@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public bool caminar;
     private Vector3 posicionActual;
     public Transform avatar;
-    public GameObject menuInicial;
 
 
 
@@ -54,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
                 if (menu.activeSelf) return;
             }
         }
-        if (menuInicial != null && menuInicial.activeSelf) return;
+       
 
         if (Input.GetMouseButtonDown(0))
         {

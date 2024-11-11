@@ -3438,6 +3438,7 @@ MonoBehaviour:
   cancelarButton: {fileID: 1959237419}
   gameManager: {fileID: 948257739}
   precio: 500
+  placaActivar: {fileID: 0}
 --- !u!4 &450106625
 Transform:
   m_ObjectHideFlags: 0
@@ -7442,7 +7443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2118480154}
-  offset: {x: 0, y: 20, z: -20}
+  height: 15
   smoothSpeed: 0.125
 --- !u!1 &968096542 stripped
 GameObject:
@@ -7743,6 +7744,7 @@ MonoBehaviour:
   cancelarButton: {fileID: 1329982828}
   gameManager: {fileID: 948257739}
   precio: 2000
+  placaActivar: {fileID: 0}
 --- !u!1 &998727213
 GameObject:
   m_ObjectHideFlags: 0
@@ -15558,7 +15560,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuComprar: {fileID: 997737800}
   gameManager: {fileID: 948257739}
-  placaActivar: {fileID: 0}
 --- !u!65 &1865817011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18441,11 +18442,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  menuComprar: {fileID: 997737800}
+  menuComprar:
+  - {fileID: 997737800}
+  - {fileID: 450106623}
   animator: {fileID: 228535672}
   caminar: 0
   avatar: {fileID: 0}
-  menuInicial: {fileID: 1257090538}
 --- !u!4 &2118480154
 Transform:
   m_ObjectHideFlags: 0
