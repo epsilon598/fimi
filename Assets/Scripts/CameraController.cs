@@ -2,36 +2,31 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;        // Referencia al jugador
-    public Vector3 offset;          // Desplazamiento de la cámara respecto al jugador
-    public float smoothSpeed = 0.125f; // Velocidad de suavizado del movimiento de la cámara
-
-    private Quaternion initialRotation;  // Almacena la rotación inicial de la cámara
+    public Transform player;            // Referencia al jugador
+    public float height = 15f;          // Altura de la cámara sobre el jugador
+    public float smoothSpeed = 0.125f;  // Velocidad de suavizado de la cámara
 
     void Start()
     {
-        // Si no has asignado al jugador manualmente en el inspector, búscalo por el nombre o tag
+        // Si no has asignado al jugador manualmente en el inspector, búscalo por el tag "Player"
         if (player == null)
         {
             player = GameObject.FindWithTag("Player").transform;
         }
-
-        // Guardar la rotación inicial de la cámara para mantenerla fija
-        initialRotation = transform.rotation;
     }
 
     void LateUpdate()
     {
-        // La nueva posición deseada de la cámara, manteniendo el desplazamiento
-        Vector3 desiredPosition = player.position + offset;
+        // Calcula la posición deseada directamente encima del jugador
+        Vector3 desiredPosition = new Vector3(player.position.x, player.position.y + height, player.position.z);
 
-        // Interpolar suavemente entre la posición actual de la cámara y la posición deseada
+        // Interpola suavemente entre la posición actual y la deseada
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        // Asignar la nueva posición suavizada a la cámara
+        // Asigna la nueva posición suavizada a la cámara
         transform.position = smoothedPosition;
 
-        // Mantener la rotación inicial de la cámara (sin rotar hacia el jugador)
-        transform.rotation = initialRotation;
+        // Apunta la cámara directamente hacia abajo
+        transform.rotation = Quaternion.Euler(90f, 0f, 0f);
     }
 }

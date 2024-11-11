@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = 9.81f;     // Fuerza de gravedad
     private Vector3 velocity;         // Velocidad actual de caída
     public LayerMask groundLayer;     // Layer que identifica el suelo
-    public GameObject menuComprar;    // Referencia al menú MenuComprar
+    [SerializeField] private GameObject[] menuComprar;    // Referencia al menú MenuComprar
     public Animator animator;
     public bool caminar;
     private Vector3 posicionActual;
     public Transform avatar;
+    public GameObject menuInicial;
+
 
 
     void Start()
@@ -45,7 +47,14 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement()
     {
         // Si el menú está activo, se impide el movimiento del jugador
-        if (menuComprar != null && menuComprar.activeSelf) return;
+        if (menuComprar != null)
+        {
+            foreach (GameObject menu in menuComprar)
+            {
+                if (menu.activeSelf) return;
+            }
+        }
+        if (menuInicial != null && menuInicial.activeSelf) return;
 
         if (Input.GetMouseButtonDown(0))
         {

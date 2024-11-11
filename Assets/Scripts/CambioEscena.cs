@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class CambioEscena : MonoBehaviour
 {
+    [SerializeField] private GameObject Jugador, Terreno, Colegio, Canva, Placa1, CanvaInit, menu;
+    [SerializeField] private GameObject[] objetosParaDesactivar; // Arreglo para almacenar los objetos a desactivar
 
-    [SerializeField] private GameObject Jugador,Terreno,Colegio,Canva,Placa1,CanvaInit,menu;
     public void ActivarObj()
     {
+        // Activa los objetos necesarios
         Jugador.SetActive(true);
         Terreno.SetActive(true);
         Colegio.SetActive(true);
         Canva.SetActive(true);
         Placa1.SetActive(true);
         CanvaInit.SetActive(false);
+
+        // Desactiva todos los objetos en el arreglo
+        foreach (GameObject obj in objetosParaDesactivar)
+        {
+            obj.SetActive(false);
+        }
     }
 
     public void SalirJuego()
@@ -31,5 +39,4 @@ public class CambioEscena : MonoBehaviour
             }
         }
     }
-
 }

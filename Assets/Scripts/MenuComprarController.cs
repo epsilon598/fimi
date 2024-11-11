@@ -5,10 +5,12 @@ public class MenuComprarController : MonoBehaviour
 {
     public GameObject menuComprar; // Asigna el objeto MenuComprar en el Inspector
     public GameObject placa;
-    public GameObject edificio;
+    [SerializeField] private GameObject[] objetosParaDesactivar;
     public Button aceptarButton;   // Asigna el botón Aceptar desde el Inspector
     public Button cancelarButton;  // Asigna el botón Cancelar desde el Inspector
     public GameManager gameManager;
+    [SerializeField] public int precio;
+     public GameObject placaActivar;
 
     private void Start()
     {
@@ -25,15 +27,20 @@ public class MenuComprarController : MonoBehaviour
     {
         Debug.Log("Botón Aceptar presionado.");
 
-        if (gameManager.budget >= 2000)
+        if (gameManager.budget >= precio)
         {
-            gameManager.SubtractMoney(2000);
+            gameManager.SubtractMoney(precio);
             Debug.Log("2000 monedas restadas.");
 
             // Intenta ocultar el menú y confirma en la consola
             menuComprar.SetActive(false);
             placa.SetActive(false);
-            edificio.SetActive(true);
+            foreach (GameObject obj in objetosParaDesactivar)
+        {
+            obj.SetActive(true);
+            placaActivar.SetActive(true);
+        
+        }
             Debug.Log("MenuComprar ocultado.");
         }
         else

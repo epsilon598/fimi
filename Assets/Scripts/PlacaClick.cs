@@ -4,6 +4,7 @@ public class PlacaClick : MonoBehaviour
 {
     public GameObject menuComprar; // Asigna el objeto MenuComprar desde el Inspector
     public GameManager gameManager;
+   
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class PlacaClick : MonoBehaviour
     {
         // Muestra el menú
         menuComprar.SetActive(true);
-        
+  
         // Resta 2000 al presupuesto si es suficiente
     }
 }
