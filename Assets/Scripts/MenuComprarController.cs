@@ -26,28 +26,32 @@ public class MenuComprarController : MonoBehaviour
     private void OnAceptarClick()
     {
         Debug.Log("Botón Aceptar presionado.");
-
+    
+        // Verifica si el presupuesto es suficiente
         if (gameManager.budget >= precio)
         {
             gameManager.SubtractMoney(precio);
-            Debug.Log("2000 monedas restadas.");
-
-            // Intenta ocultar el menú y confirma en la consola
+            Debug.Log($"{precio} monedas restadas.");
+    
+            // Oculta el menú de compra y la placa, y activa los objetos necesarios
             menuComprar.SetActive(false);
             placa.SetActive(false);
+            
             foreach (GameObject obj in objetosParaDesactivar)
-        {
-            obj.SetActive(true);
+            {
+                obj.SetActive(true);
+            }
+            
             placaActivar.SetActive(true);
-        
-        }
-            Debug.Log("MenuComprar ocultado.");
+            
+            Debug.Log("MenuComprar ocultado y objetos activados.");
         }
         else
         {
             Debug.Log("No tienes suficiente presupuesto.");
         }
     }
+
 
     private void OnCancelarClick()
     {
